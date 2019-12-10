@@ -4,32 +4,31 @@
 {% block body_block %}
 <div class="jumbotron">
   <div class="post-list-item">
-    <!-- <div class="col-xs-5">
-      <img class="post-object" src="{% static 'images/frozen.jpg' %}" />
-    </div> -->
-    <div class="post-heading">
-      <h1>{{movie_details.movie_name}}</h1>
+    <div class="media">
+      <div class="media-body">
+        <div class="post-heading mt-0 mb-1">
+          <h1>{{movie_details.movie_name}}</h1>
+        </div>
+
+        <p class="text-muted">
+          <br>
+          <h5>Rates: {{movie_details.rate}}</h5><br>
+          <h5>Box Office: {{movie_details.box_office}}</h5><br>
+          <h5>Movie Details:</h5>
+          <p>Release Date: {{movie_details.release_date}}</p>
+          <p>Genre: {{movie_details.genre}}</p>
+          <p>Language: {{movie_details.language}}</p>
+          <p>Runtime: {{movie_details.duration}}</p>
+          <p>Director: {{movie_details.director}}</p>
+          <p>Casts: {{movie_details.casts}}</p>
+          <p>Overview: {{movie_details.overview}}</p>
+        </p>
+      </div>
+      <img src="{{movie_details.url}}" class="ml-3" alt="..." style="height: 500px; width:333px">
     </div>
-
-    <p class="text-muted">
-      <br>
-      <h3>Rates: {{movie_details.rate}}</h3><br>
-
-      <br>
-      <h3>Box Office: {{movie_details.box_office}}</h3><br>
-
-      <h5>Movie Details:</h5>
-      <p>Release Date: {{movie_details.release_date}}</p>
-
-      <p>Genre: {{movie_details.genre}}</p>
-      <p>Language: {{movie_details.language}}</p>
-      <p>Runtime: {{movie_details.duration}}</p>
-      <p>Director: {{movie_details.director}}</p>
-      <p>Casts: {{movie_details.casts}}</p>
-      <p>Overview: {{movie_details.overview}}</p>
-    </p>
   </div>
 </div>
+
 
 <div class="container">
   <h3>Reviews:</h3>
