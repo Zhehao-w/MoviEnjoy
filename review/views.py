@@ -8,6 +8,9 @@ from django.views.generic import (View,TemplateView,
 from . import models
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from review.forms import ReviewForm
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 class ReviewListView(ListView):
 
@@ -33,3 +36,29 @@ class ReviewUpdateView(LoginRequiredMixin, UpdateView):
 class ReviewDeleteView(LoginRequiredMixin, DeleteView):
     model = models.Review
     success_url = reverse_lazy("review:list")
+
+@login_required
+def create_review(request):
+
+    created = False
+
+    if request.method == 'POST':
+
+        review_form = ReviewForm(data=request.POST)
+
+        if review_form.is_valid():
+
+            review = review_form.save()
+            review.save()
+
+            created = True
+
+        else:
+            print(review_form.errors)
+
+    else:
+
+        review_form = ReviewForm()
+
+
+    return render(request, 'review/create_review.html', {'review_form': review_form,'created': created})
