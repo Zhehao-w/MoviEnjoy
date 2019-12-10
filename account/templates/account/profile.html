@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body_block %}
+
+ <div class = 'jumbotron'>
+    <h1>{{user.username}}, Welcome to your Profile page</h1>
+</div> 
+
+    <div class = 'content-section'>
+        <div class='media'>
+            <!-- <img src="{{user.userprofileinfo.profile_pic.url}}" width = "150" height = "150"  />  -->
+            <div class='media-body'>
+                <h2 class='account-heading'>{{user.username}}</h2>
+                <p class='text-secondary'>{{user.email}}</p><br>
+                <p class='text-secondary'>Birthday: {{user.userprofileinfo.birthday}}</p>
+                <p class='text-secondary'>Occupation: {{user.userprofileinfo.occupation}}</p><br>
+                <p class='text-secondary'>Introduction: {{user.userprofileinfo.introduction}}</p>
+
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <p><a class='btn btn-warning' href="{% url 'account:update_profile' %}">Update</a></p>
+            
+        </div>
+        
+
+    </div> 
+
+
+
+{% endblock %}

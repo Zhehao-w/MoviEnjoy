@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+    {% block body_block %}
+
+    <div class = 'jumbotron'>
+            {% if updated %}
+            <h1>Your account has been updated!</h1>
+            {%endif%}
+            <form method = 'POST' enctype='multipart/form-data'>
+                {% csrf_token %}
+                <fieldset class='form-group'>
+                    <legend class='border-bottom mb-4'>Profile</legend>
+                      {{ u_form.as_p }} 
+                      {{ p_form.as_p }}
+                </fieldset> 
+                <!-- put the key of dict in views.py here to display the context -->
+                <div class='form-group'>
+                     <input type="submit" name='' value='Submit'>
+                </div>
+                
+            </form>
+    </div>
+        {% endblock %}

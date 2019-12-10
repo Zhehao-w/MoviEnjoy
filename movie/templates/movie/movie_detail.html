@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block body_block %}
+<div class="jumbotron">
+  <div class="post-list-item">
+    <!-- <div class="col-xs-5">
+      <img class="post-object" src="{% static 'images/frozen.jpg' %}" />
+    </div> -->
+    <div class="post-heading">
+      <h1>{{movie_details.movie_name}}</h1>
+    </div>
+
+    <p class="text-muted">
+      <br>
+      <h3>Rates: {{movie_details.rate}}</h3><br>
+
+      <br>
+      <h3>Box Office: {{movie_details.box_office}}</h3><br>
+
+      <h5>Movie Details:</h5>
+      <p>Release Date: {{movie_details.release_date}}</p>
+
+      <p>Genre: {{movie_details.genre}}</p>
+      <p>Language: {{movie_details.language}}</p>
+      <p>Runtime: {{movie_details.duration}}</p>
+      <p>Director: {{movie_details.director}}</p>
+      <p>Casts: {{movie_details.casts}}</p>
+      <p>Overview: {{movie_details.overview}}</p>
+    </p>
+  </div>
+</div>
+
+<div class="container">
+  <h3>Reviews:</h3>
+</div>
+{% for review in movie_details.reviews.all %}
+<div class="accordion" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+          aria-expanded="true" aria-controls="collapseOne">
+          <h5>{{review.title}}</h5>
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        <p>{{review.author}}, {{review.created_date}}</p>
+        <p> {{review.content}} </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

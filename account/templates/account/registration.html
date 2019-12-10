@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block body_block %}
+
+<div class="jumbotron">
+
+    {% if registered %}
+    <h1>Thank you for registering!</h1>
+
+    {% else%}
+    <h1>Register Here</h1>
+
+    <h3>Please fill out the form!</h3>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Join Today</legend>
+            {{ user_form|crispy }}
+            {{ profile_form|crispy }}
+        </fieldset>
+        <!-- put the key of dict in views.py here to display the context -->
+        <div class="form-group">
+            <input class="btn btn-primary btn-block" type="submit" name="" value="Register">
+        </div>
+
+    </form>
+</div>
+{% endif %}
+
+{% endblock %}
