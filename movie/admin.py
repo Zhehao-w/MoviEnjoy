@@ -6,7 +6,7 @@ from movie.models import Movie
 class MovieAdmin(admin.ModelAdmin):
     fields = ['movie_name', 'release_date',
               'box_office', 'duration', 'language', 'genre', 'casts',
-              'rate', 'director', 'overview', ]
+              'rate', 'director', 'overview', 'url', ]
 
     search_fields = ['movie_name', 'language', 'director', 'genre', 'casts', ]
 
