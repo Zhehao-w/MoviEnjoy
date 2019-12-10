@@ -3,22 +3,19 @@
 {% load staticfiles %}
 {% block body_block %}
 <div class="jumbotron">
-
   <h1>Welcome to the List of Reviews Page!</h1>
-  <p></p>
-
-
-
-  <ol>
-    {% for review in review_list %}
-    <h3>
-      <li><a href="{{review.id}}/">{{review.title}} </a></li>
-    </h3> <br>
-    {% endfor %}
-  </ol>
-
 </div>
 
+{% for review in review_list %}
+<div class="card" style="width: w-100;">
+  <div class="card-body">
+    <h5 class="card-title"><a href="{{review.id}}/">{{review.title}}</a></h5>
+    <p class="card-text">by {{review.author}}</p>
+    <a href="#" class="btn btn-primary">Read More</a>
+  </div>
+</div>
+{% endfor %}
+<br><br>
 
 <!-- TODO: Paination -->
 <nav aria-label="Page navigation example">
